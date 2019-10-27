@@ -20,4 +20,10 @@ Imports:
     survival,
     survminer,
     ExploratoryDataAnalysis,
-    extRemes
+    extRemes,
+    tidyr,
+    dplyr,
+    grDevices,
+    graphics,
+    stats,
+    utils

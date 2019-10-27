@@ -2,8 +2,15 @@
 #'
 #' @import survival
 #' @import survminer
-#' @import ExploratoryDataAnalysis
-#' @import extRemes
+#' @import tidyr
+#' @import dplyr
+#' @importFrom grDevices dev.off
+#' @importFrom grDevices pdf
+#' @importFrom graphics plot
+#' @importFrom stats as.formula
+#' @importFrom stats resid
+#' @importFrom stats time
+#' @importFrom utils write.csv
 #'
 #' @param data A data.frame-class object.
 #' @param var.time A column name specifies the time variable in the data.
@@ -85,7 +92,7 @@ fract_curve <- function(
     km.fit$time,
     km.fit$surv
     ) %>%
-    mutate(
+    dplyr::mutate(
       I.Y =
         (km.fit.time-min(km.fit.time))/
         (max(km.fit.time)-min(km.fit.time)) +
@@ -100,7 +107,7 @@ fract_curve <- function(
   # linear regression between two points
   # returns a line intersects these two points.
 
-  fit.IY <- lm(
+  fit.IY <- stats::lm(
     I.Y ~ km.fit.time,
     df.I.Y %>%
       dplyr::filter(
@@ -117,7 +124,7 @@ fract_curve <- function(
   # Difference between the scaled-KM curve and the secant line.---------
 
   df.I.Y$pred.lm  <-
-    predict(fit.IY, df.I.Y)
+    stats::predict(fit.IY, df.I.Y)
 
   df.I.Y$resid <-
     df.I.Y$pred.lm - df.I.Y$I.Y
@@ -130,7 +137,7 @@ fract_curve <- function(
   # returns a line intersects these two points.
 
 
-  fit.km.fit.time <- lm(
+  fit.km.fit.time <- stats::lm(
     surv ~ time,
     df.km.fit %>%
       dplyr::filter(
@@ -144,7 +151,7 @@ fract_curve <- function(
   )
 
   df.km.fit$pred.lm  <-
-    predict(fit.km.fit.time, df.km.fit)
+    stats::predict(fit.km.fit.time, df.km.fit)
 
   df.km.fit$resid <-
     df.km.fit$pred.lm - df.km.fit$surv
@@ -152,7 +159,7 @@ fract_curve <- function(
 
 
   ggdata <- df.I.Y %>%
-    ggplot(
+    ggplot2::ggplot(
       aes(
         x=km.fit.time,
         y=I.Y
@@ -160,7 +167,7 @@ fract_curve <- function(
       )
 
   ggdata_resid <- df.I.Y %>%
-    ggplot(
+    ggplot2::ggplot(
       aes(
         x = km.fit.time,
         y=resid
@@ -168,7 +175,7 @@ fract_curve <- function(
     )
 
   ggdata.km.fit_resid <- df.km.fit %>%
-    ggplot(
+    ggplot2::ggplot(
       aes(
         x=time,
         y=resid
@@ -204,8 +211,8 @@ fract_curve <- function(
   )
   plot(
     ggdata +
-      geom_point() +
-      geom_vline(
+      ggplot2::geom_point() +
+      ggplot2::geom_vline(
         xintercept =  df.I.Y[
           df.I.Y$I.Y==max(df.I.Y$I.Y),
           "km.fit.time"
@@ -213,19 +220,19 @@ fract_curve <- function(
       ) +
       scale_x_continuous(
         breaks = c(
-          unname(quantile(df.I.Y$km.fit.time,c(0, 0.25, 0.75, 1))),
+          unname(stats::quantile(df.I.Y$km.fit.time,c(0, 0.25, 0.75, 1))),
           df.I.Y[
             df.I.Y$I.Y==max(df.I.Y$I.Y),
             "km.fit.time"
             ]
         )
       ) +
-      theme_bw()
+      ggplot2::theme_bw()
   )
   plot(
     ggdata.km.fit_resid +
-      geom_point() +
-      geom_vline(
+      ggplot2::geom_point() +
+      ggplot2::geom_vline(
         xintercept =  df.I.Y[
           df.I.Y$I.Y==max(df.I.Y$I.Y),
           "km.fit.time"
@@ -233,19 +240,19 @@ fract_curve <- function(
       ) +
       scale_x_continuous(
         breaks = c(
-          unname(quantile(df.I.Y$km.fit.time,c(0, 0.25, 0.75, 1))),
+          unname(stats::quantile(df.I.Y$km.fit.time,c(0, 0.25, 0.75, 1))),
           df.I.Y[
             df.I.Y$I.Y==max(df.I.Y$I.Y),
             "km.fit.time"
             ]
         )
       ) +
-      theme_bw()
+      ggplot2::theme_bw()
   )
   plot(
     ggdata_resid +
-      geom_point() +
-      theme_bw()
+      ggplot2::geom_point() +
+      ggplot2::theme_bw()
     )
   dev.off()
   }
