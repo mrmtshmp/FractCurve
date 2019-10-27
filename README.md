@@ -1,9 +1,9 @@
 <<<<<<< HEAD
-# FractCurve:
-# An R package for finding a point of fracture on a curve.
-Shimpei Morimoto (2019)
+# FractCurve: an R package for finding a point of fracture on a curve.
 =======
-# FractCurve: an R package for finding a point of fracture ona curve. 
+# FractCurve: 
+# an R package for finding a point of fracture ona curve. 
+Shimpei Morimoto (2019)
 To install this package, type as bellow in your R console:
 `devtools::install_github("mrmtshmp/FractCurve", build_vignettes = TRUE)`
  After requiring the library, 
