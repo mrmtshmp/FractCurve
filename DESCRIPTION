@@ -1,6 +1,6 @@
 Package: FractCurve
 Title: Find a point of fracture on curve.
-Version: 0.0.0.9000
+Version: 0.0.1.0000
 Authors@R: 
     person(given = "Shimpei",
            family = "Morimoto",
