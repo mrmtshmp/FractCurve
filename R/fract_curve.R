@@ -53,9 +53,6 @@ fract_curve <- function(
     data_surv <- data
     data_surv$dummy <- 1
 
-    SNPs  <- "Radiation"
-    var.x <- "dummy"
-
     data_surv$Surv.obj <-
       with(
         data_surv,
