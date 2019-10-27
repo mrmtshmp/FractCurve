@@ -59,8 +59,8 @@ fract_curve <- function(
       with(
         data_surv,
         Surv(
-          time  = data_surv[ ,var.time],
-          event = data_surv[ ,var.event]
+          time  = data_surv[ ,get(var.time)],
+          event = data_surv[ ,get(var.event)]
           )
       )
 
