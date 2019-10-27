@@ -18,21 +18,21 @@ knitr::opts_chunk$set(
 library(FractCurve)
 ```
 
-# The concept of the algorithm.
+#1. The concept of the algorithm.
 
-```{r label, out.width = "85%", fig.cap = "A walkthrough of analysis concept."}
+```{r echo=FALSE, label, out.width = "85%", fig.cap = "A walkthrough of analysis concept."}
 require(knitr)
 include_graphics("Finding_a_point_of_fracture.pdf")
 ```
 
 
-# The main algorithm.
+#2. The main algorithm.
 
 The KM curve is scaled to ...
 
 The function `fract_curve()` employ this analysis ...
 
-# 2 conditions to be met the algorithm works.
+#3. Two conditions to be met the algorithm works.
 
 ## Straightness
 
