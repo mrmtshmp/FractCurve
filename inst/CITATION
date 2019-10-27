@@ -11,6 +11,6 @@ citEntry(
   pages    = ,
   url      = ,
   textVersion = paste(
-
+"An R package for finding a point of fracture on a curve. Morimoto,S.(2019)"
   )
 )
