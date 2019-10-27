@@ -30,6 +30,7 @@ fract_curve <- function(
   km.fit=NULL,
   dir.output=NULL,
   fn.output=NULL,
+  get.df_of_IYs =TRUE,
   fn.df_of_IYs=NULL
   ){
 
