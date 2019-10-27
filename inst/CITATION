@@ -7,13 +7,3 @@ bibentry(bibtype = "Manual",
          url = {"https://github.com/mrmtshmp/FractCurve"}
          )
 
-citEntry(
-  entry    = {Manual},
-  title    = {FractCurve: an R package for finding a point of fracture on a curve.},
-  author   = {{Shimpei Morimoto}},
-  year     = {2019},
-  url      = {https://github.com/mrmtshmp/FractCurve},
-  textVersion = paste(
-    "Morimoto,S.(2019). FracrCurve: An R package for finding a point of fracture on a curve."
-    )
-    )
