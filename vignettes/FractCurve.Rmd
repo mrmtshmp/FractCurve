@@ -1,8 +1,8 @@
 ---
-title: "FractCurve: an R package for finfing a point on a curv.e"
+title: "FractCurve: an R package for finding a point on a curve."
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{my-vignette}
+  %\VignetteIndexEntry{FractCurve}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,3 +17,27 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(FractCurve)
 ```
+
+# The concept of the algorithm.
+
+```{r label, out.width = "85%", fig.cap = "A walkthrough of analysis concept."}
+require(knitr)
+include_graphics("Finding_a_point_of_fracture.pdf")
+```
+
+
+# The main algorithm.
+
+The KM curve was ...
+
+
+
+# 2 conditions to be met the algorithm works.
+
+## Straightness
+
+## Convex to right
+
+We confirmed that ...
+
+
