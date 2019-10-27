@@ -1,7 +1,7 @@
 citHeader("To cite FractCurve in publications use:")
 
 citEntry(
-  entry    = "Manual",
+  entry    = {Manual},
   title    = {FractCurve: an R package for finding a point of fracture on a curve.},
   author   = {{Shimpei Morimoto}},
   year     = {2019},
