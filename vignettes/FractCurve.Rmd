@@ -2,7 +2,7 @@
 title: "FractCurve: an R package for finding a point on a curve."
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{FractCurve}
+  %\VignetteIndexEntry{FractCurve: an R package for finding a point on a curve.}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
