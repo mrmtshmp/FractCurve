@@ -160,7 +160,7 @@ fract_curve <- function(
 
   ggdata <- df.I.Y %>%
     ggplot2::ggplot(
-      aes(
+      ggplot2::aes(
         x=km.fit.time,
         y=I.Y
         )
@@ -168,7 +168,7 @@ fract_curve <- function(
 
   ggdata_resid <- df.I.Y %>%
     ggplot2::ggplot(
-      aes(
+      ggplot2::aes(
         x = km.fit.time,
         y=resid
       )
@@ -176,7 +176,7 @@ fract_curve <- function(
 
   ggdata.km.fit_resid <- df.km.fit %>%
     ggplot2::ggplot(
-      aes(
+      ggplot2::aes(
         x=time,
         y=resid
         )
