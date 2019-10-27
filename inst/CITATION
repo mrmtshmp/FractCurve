@@ -3,9 +3,9 @@ citHeader("To cite FractCurve in publications use:")
 citEntry(
   entry    = "Article",
   title    = ,
-  author   = ,
+  author   = "Shimpei Morimoto",
   journal  = ,
-  year     = ,
+  year     = 2019/10/25,
   volume   = ,
   number   = ,
   pages    = ,
