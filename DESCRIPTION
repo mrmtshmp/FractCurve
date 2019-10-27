@@ -1,5 +1,5 @@
 Package: FractCurve
-Title: What the Package Does (One Line, Title Case)
+Title: Find a point of fracture on curve.
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Shimpei",
