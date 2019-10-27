@@ -53,12 +53,14 @@ fract_curve <- function(
     data_surv <- data
     data_surv$dummy <- 1
 
+    print(str(data_surv))
+
     data_surv$Surv.obj <-
       with(
         data_surv,
         Surv(
-          time  = data_surv[ , var.time],
-          event = data_surv[ , var.event]
+          time  = data_surv[ ,var.time],
+          event = data_surv[ ,var.event]
           )
       )
 
@@ -218,7 +220,9 @@ fract_curve <- function(
       ) +
       scale_x_continuous(
         breaks = c(
-          unname(stats::quantile(df.I.Y$km.fit.time,c(0, 0.25, 0.75, 1))),
+          unname(
+            stats::quantile(df.I.Y$km.fit.time,c(0, 0.25, 0.75, 1))
+            ),
           df.I.Y[
             df.I.Y$I.Y==max(df.I.Y$I.Y),
             "km.fit.time"
