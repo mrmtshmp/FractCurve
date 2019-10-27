@@ -4,8 +4,9 @@
 \alias{fract_curve}
 \title{Finding a point of fracture on a Kaplan-Meier curve.}
 \usage{
-fract_curve(data, var.time, var.event, km.fit = NULL,
-  dir.output = NULL, fn.output = NULL, fn.df_of_IYs = NULL)
+fract_curve(data, var.time, var.event, fn.plot_pdf, km.fit = NULL,
+  dir.output = NULL, fn.output = NULL, get.df_of_IYs = TRUE,
+  fn.df_of_IYs = NULL)
 }
 \arguments{
 \item{data}{A data.frame-class object.}
@@ -14,15 +15,15 @@ fract_curve(data, var.time, var.event, km.fit = NULL,
 
 \item{var.event}{A column name specifies the event variable in the data.}
 
+\item{fn.plot_pdf}{The pdf file name for outputs.}
+
 \item{km.fit}{As an alternative to "data", "var.time" and "var.event", you can choose input a survfit-class object.}
 
 \item{dir.output}{The directory to output results.}
 
-\item{fn.df_of_IYs}{The csv file name for IY output.}
-
 \item{get.df_of_IYs}{A logical if IYs will be obtained as data.frame in result.}
 
-\item{fn.plot_pdf}{The pdf file name for outputs.}
+\item{fn.df_of_IYs}{The csv file name for IY output.}
 }
 \description{
 Finding a point of fracture on a Kaplan-Meier curve.
