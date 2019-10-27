@@ -1,16 +1,12 @@
 citHeader("To cite FractCurve in publications use:")
 
 citEntry(
-  entry    = "Article",
-  title    = ,
-  author   = "Shimpei Morimoto",
-  journal  = ,
-  year     = 2019/10/25,
-  volume   = ,
-  number   = ,
-  pages    = ,
-  url      = ,
+  entry    = "Manual",
+  title    = {FractCurve: an R package for finding a point of fracture on a curve.},
+  author   = {{Shimpei Morimoto}},
+  year     = {2019},
+  url      = {https://github.com/mrmtshmp/FractCurve},
   textVersion = paste(
-"An R package for finding a point of fracture on a curve. Morimoto,S.(2019)"
+"Morimoto,S.(2019). FracrCurve: An R package for finding a point of fracture on a curve."
   )
 )
