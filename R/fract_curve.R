@@ -50,7 +50,7 @@ fract_curve <- function(
       stop('"var.time" or "var.event" is not specified.')
       }
 
-    data_surv <- data
+    data_surv <- as.data.frame(data)
     data_surv$dummy <- 1
 
     print(class(data_surv))
