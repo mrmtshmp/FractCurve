@@ -1,8 +1,8 @@
 ---
-title: "FractCurve: an R package for finding a point on a curve."
+title: "FractCurve: an R package for finding a point of fracture on a curve."
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{FractCurve: an R package for finding a point on a curve.}
+  %\VignetteIndexEntry{FractCurve: an R package for finding a point of fracture on a curve.}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
