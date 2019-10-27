@@ -53,10 +53,10 @@ fract_curve <- function(
     data_surv <- data
     data_surv$dummy <- 1
 
-    val.time <- as.numeric(data_surv[ ,var.time])
-    val.event <- as.numeric(data_surv[ ,var.event])
+    data_surv$val.time <- data_surv[ ,var.time]
+    data_surv$val.event <- data_surv[ ,var.event]
 
-    print(val.time); print(val.event)
+    print(data_surv$val.time); print(data_surv$val.event)
 
     data_surv$Surv.obj <-
       with(
