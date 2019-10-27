@@ -28,9 +28,9 @@ include_graphics("Finding_a_point_of_fracture.pdf")
 
 # The main algorithm.
 
-The KM curve was ...
+The KM curve is scaled to ...
 
-
+The function `r fract_curve()` employ this analysis ...
 
 # 2 conditions to be met the algorithm works.
 
