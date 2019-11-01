@@ -1,6 +1,12 @@
 ---
 title: "FractCurve: an R package for finding a point of fracture on a curve."
-output: rmarkdown::html_vignette
+author: Shimpei Morimoto
+output: 
+  html_document:
+    mathjax:  default
+    fig_caption:  true
+    toc: true
+    section_numbering: true
 vignette: >
   %\VignetteIndexEntry{FractCurve: an R package for finding a point of fracture on a curve.}
   %\VignetteEngine{knitr::rmarkdown}
@@ -10,11 +16,17 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+	fig.width = 12, 
+	message = FALSE,
+	warning = FALSE,
+	tidy.opts = list(
+		keep.blank.line = TRUE,
+		width.cutoff = 150
+		),
+	options(width = 150),
+	eval = TRUE
 )
-```
-
-```{r setup}
 library(FractCurve)
 ```
 
