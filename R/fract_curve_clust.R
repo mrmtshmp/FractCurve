@@ -123,7 +123,7 @@ fract_curve_clust <- function(
           ]
       )
     )
-    res.test[[i]] <- res.test
+    res.test[[i]] <- res.test_i
   }
   return(
     list(
