@@ -195,7 +195,7 @@ fract_curve <- function(
 
   if(get.df_of_IYs){
     write.csv(
-      x = ,
+      x = df.I.Y,
       file = sprintf(
         '%s/%s',
         dir.output,
