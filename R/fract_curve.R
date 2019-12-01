@@ -27,6 +27,7 @@ fract_curve <- function(
   data,
   var.time,
   var.event,
+  var.x = 1,
   fn.plot_pdf,
   km.fit=NULL,
   dir.output=NULL,
