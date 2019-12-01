@@ -195,7 +195,8 @@ fract_curve <- function(
 
   if(get.df_of_IYs){
     write.csv(
-      sprintf(
+      x = ,
+      file = sprintf(
         '%s/%s',
         dir.output,
         fn.df_of_IYs
@@ -262,6 +263,7 @@ fract_curve <- function(
       ggplot2::theme_bw()
     )
   dev.off()
+  return(df.I.Y)
   }
 # End runt---------
 

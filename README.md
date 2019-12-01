@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # FractCurve: 
 an R package for finding a point of fracture on a curve.
 =======
