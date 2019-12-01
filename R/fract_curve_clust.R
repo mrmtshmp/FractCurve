@@ -88,6 +88,11 @@ fract_curve_clust <- function(
     fn.df_of_IYs = fn.df_of_IYs
     )
 
+  df.res.fracrcurve <-
+    df.res.fracrcurve[
+      order(df.res.fracrcurve$km.fit.time),
+      ]
+
   clusters <- cutree(
     res.clust[[1]],
     k = which(df.res.fracrcurve$rank.I.Y==1)-1

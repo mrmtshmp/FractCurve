@@ -265,7 +265,7 @@ fract_curve <- function(
     )
   dev.off()
   print(head(df.I.Y))
-  return(df.I.Y[order(df.I.Y$km.fit.time)])
+  return(df.I.Y[order(df.I.Y$km.fit.time),])
   }
 # End runt---------
 
