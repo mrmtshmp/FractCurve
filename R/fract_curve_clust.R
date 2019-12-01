@@ -129,6 +129,7 @@ fract_curve_clust <- function(
     list(
       df.res.fracrcurve,
       res.clust,
+      clusters,
       res.test
       )
     )
