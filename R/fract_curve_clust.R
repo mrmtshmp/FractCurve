@@ -95,7 +95,7 @@ fract_curve_clust <- function(
 
   clusters <- cutree(
     res.clust[[1]],
-    k = which(df.res.fracrcurve$rank.I.Y==1)-1
+    k = which(df.res.fracrcurve$rank.I.Y==1)
     )
 
   group <- df.phenotype[,var.phenoGroup]
