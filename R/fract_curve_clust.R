@@ -121,16 +121,34 @@ fract_curve_clust <- function(
         table(clusters, group)[
           row.select_i,
           ]
+        )
       )
-    )
+    res.test_i$vs.info <- sprintf("%s vs %s", row.select[i,'a'], row.select[i,'b'])
     res.test[[i]] <- res.test_i
   }
+
+  df.res.test <- sapply(
+    lapply(
+      res.test,
+      function(x){t(data.frame(unlist(x)))}
+      ),
+    function(x){unlist(data.frame(x))}
+    ) %>%
+    t() %>%
+    data.frame() %>%
+    mutate(
+      p.value=round(as.numeric(p.value), 3),
+      conf.int1=round(as.numeric(conf.int1), 3),
+      conf.int2=round(as.numeric(conf.int2), 3),
+      estimate.odds.ratio=round(as.numeric(estimate.odds.ratio), 3)
+    )
+
   return(
     list(
       df.res.fracrcurve,
       res.clust,
       clusters,
-      res.test
+      df.res.test
       )
     )
   }
