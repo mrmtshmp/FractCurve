@@ -36,6 +36,7 @@ fract_curve_clust <- function(
   method.dist.col   ='manhattan',
   method.hclust.row ='ward',
   method.hclust.col ='ward',
+  fisher_test=TRUE,
   dir.output,
   get.df_of_IYs,
   fn.plot_pdf,
@@ -98,59 +99,68 @@ fract_curve_clust <- function(
     k = which(df.res.fracrcurve$rank.I.Y==1)
     )
 
-  group <- df.phenotype[,var.phenoGroup]
+  if(fisher_test){
+    group <- df.phenotype[,var.phenoGroup]
 
-  names(group) <-
-    rownames(
-      df.phenotype
+    names(group) <-
+      rownames(
+        df.phenotype
       )
 
-  row.select <-
-    expand_grid(
-      a=unique(clusters),
-      b=unique(clusters)
-    ) %>%
-    filter(a < b)
+    row.select <-
+      expand_grid(
+        a=unique(clusters),
+        b=unique(clusters)
+      ) %>%
+      filter(a < b)
 
-  res.test <- list()
+    res.test <- list()
 
-  for(i in 1:nrow(row.select)){
-    row.select_i <- unlist(c(row.select[i,'a'], row.select[i,'b']))
-    res.test_i <- fisher.test(
-      as.matrix(
-        table(clusters, group)[
-          row.select_i,
-          ]
+    for(i in 1:nrow(row.select)){
+      row.select_i <- unlist(c(row.select[i,'a'], row.select[i,'b']))
+      res.test_i <- fisher.test(
+        as.matrix(
+          table(clusters, group)[
+            row.select_i,
+            ]
         )
       )
-    res.test_i$vs.info <- sprintf("%s vs %s", row.select[i,'a'], row.select[i,'b'])
-    res.test[[i]] <- res.test_i
-  }
+      res.test_i$vs.info <- sprintf("%s vs %s", row.select[i,'a'], row.select[i,'b'])
+      res.test[[i]] <- res.test_i
+    }
 
-  df.res.test <- sapply(
-    lapply(
-      res.test,
-      function(x){t(data.frame(unlist(x)))}
+    df.res.test <- sapply(
+      lapply(
+        res.test,
+        function(x){t(data.frame(unlist(x)))}
       ),
-    function(x){unlist(data.frame(x))}
+      function(x){unlist(data.frame(x))}
     ) %>%
-    t() %>%
-    data.frame() %>%
-    mutate(
-      p.value=round(as.numeric(p.value), 3),
-      conf.int1=round(as.numeric(conf.int1), 3),
-      conf.int2=round(as.numeric(conf.int2), 3),
-      estimate.odds.ratio=round(as.numeric(estimate.odds.ratio), 3)
-    )
-
-  return(
-    list(
-      df.res.fracrcurve,
-      res.clust,
-      clusters,
-      df.res.test
+      t() %>%
+      data.frame() %>%
+      mutate(
+        p.value=round(as.numeric(p.value), 3),
+        conf.int1=round(as.numeric(conf.int1), 3),
+        conf.int2=round(as.numeric(conf.int2), 3),
+        estimate.odds.ratio=round(as.numeric(estimate.odds.ratio), 3)
+      )
+    return(
+      list(
+        df.res.fracrcurve,
+        res.clust,
+        clusters,
+        df.res.test
       )
     )
+  }else{
+    return(
+      list(
+        df.res.fracrcurve,
+        res.clust,
+        clusters
+      )
+    )
+    }
   }
 
 
