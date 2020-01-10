@@ -4,6 +4,7 @@
 #' @import survminer
 #' @import tidyr
 #' @import dplyr
+#' @import ggplot2
 #' @importFrom stats hclust
 #' @importFrom stats dist
 #' @importFrom grDevices dev.off
