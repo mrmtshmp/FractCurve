@@ -1,5 +1,5 @@
 ---
-title: "FractCurve: an R package for finding a point of fracture on a curve."
+title: "Deciding the number of clusters using FractCurve package."
 author: Shimpei Morimoto
 output: 
   html_document:
@@ -8,7 +8,7 @@ output:
     toc: true
     section_numbering: true
 vignette: >
-  %\VignetteIndexEntry{FractCurve: an R package for finding a point of fracture on a curve.}
+  %\VignetteIndexEntry{Deciding the number of clusters using FractCurve package.}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -67,17 +67,14 @@ heatmap(mat)
 
 res.fract_curve_clust <- fract_curve_clust(
   df.features = as.data.frame(mat),
-                                           method.dist.row = "manhattan", method.dist.col = "manhattan",
-                                           method.hclust.row = "ward", method.hclust.col = "ward",
-                                           dir.output = dir.Output,
-                                           get.df_of_IYs=TRUE, 
-                                           fn.plot_pdf =
-                                             
-                                               "TEST_FractCurve.pdf",
-                                          
-                                           fn.df_of_IYs =
-                                               "TEST_FractCurve.csv",fisher_test = FALSE
-                                      )
+  method.dist.row = "manhattan", method.dist.col = "manhattan",
+  method.hclust.row = "ward", method.hclust.col = "ward",
+  dir.output = NULL,
+  get.df_of_IYs=FALSE,
+  fn.plot_pdf =NULL,
+  fn.df_of_IYs = NULL,
+  fisher_test = FALSE
+  )
 
 
 ```

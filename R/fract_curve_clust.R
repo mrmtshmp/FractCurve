@@ -84,7 +84,7 @@ fract_curve_clust <- function(
     var.time = 'height',
     var.event = 'event',
     fn.plot_pdf = fn.plot_pdf,
-    dir.output = dir.Output,
+    dir.output = dir.output,
     get.df_of_IYs = get.df_of_IYs,
     fn.df_of_IYs = fn.df_of_IYs
     )
