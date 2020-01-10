@@ -207,6 +207,55 @@ fract_curve <- function(
 
   # PDF file.
 
+  if(is.null(fn.plot_pdf)){
+    plot(
+      ggdata +
+        ggplot2::geom_point() +
+        ggplot2::geom_vline(
+          xintercept =  df.I.Y[
+            df.I.Y$I.Y==max(df.I.Y$I.Y),
+            "km.fit.time"
+            ]
+        ) +
+        scale_x_continuous(
+          breaks = c(
+            unname(
+              stats::quantile(df.I.Y$km.fit.time,c(0, 0.25, 0.75, 1))
+            ),
+            df.I.Y[
+              df.I.Y$I.Y==max(df.I.Y$I.Y),
+              "km.fit.time"
+              ]
+          )
+        ) +
+        ggplot2::theme_bw()
+    )
+    plot(
+      ggdata.km.fit_resid +
+        ggplot2::geom_point() +
+        ggplot2::geom_vline(
+          xintercept =  df.I.Y[
+            df.I.Y$I.Y==max(df.I.Y$I.Y),
+            "km.fit.time"
+            ]
+        ) +
+        scale_x_continuous(
+          breaks = c(
+            unname(stats::quantile(df.I.Y$km.fit.time,c(0, 0.25, 0.75, 1))),
+            df.I.Y[
+              df.I.Y$I.Y==max(df.I.Y$I.Y),
+              "km.fit.time"
+              ]
+          )
+        ) +
+        ggplot2::theme_bw()
+    )
+    plot(
+      ggdata_resid +
+        ggplot2::geom_point() +
+        ggplot2::theme_bw()
+    )
+  }else{
   pdf(
     sprintf(
       "%s/%s.pdf",
@@ -264,6 +313,7 @@ fract_curve <- function(
       ggplot2::theme_bw()
     )
   dev.off()
+  }
   print(head(df.I.Y))
   return(df.I.Y[order(df.I.Y$km.fit.time),])
   }

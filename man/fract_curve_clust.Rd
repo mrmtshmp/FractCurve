@@ -13,10 +13,10 @@ fract_curve_clust(
   method.hclust.row = "ward",
   method.hclust.col = "ward",
   fisher_test = TRUE,
-  dir.output,
+  dir.output = NULL,
   get.df_of_IYs,
-  fn.plot_pdf,
-  fn.df_of_IYs
+  fn.plot_pdf = NULL,
+  fn.df_of_IYs = NULL
 )
 }
 \arguments{
