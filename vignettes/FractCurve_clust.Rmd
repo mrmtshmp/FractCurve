@@ -32,18 +32,11 @@ library(FractCurve)
 ```
 
 # 1. Introduction.
-__*FractCurve*__ is a computer program, which runs in the R environment, that can be used to identify a point of fracture on a curve. It is useful, for example, to identify a point on a Kaplan–Meier curve at which the rate of an event increases.   
-In this vignette, an explanation of the algorithm is presented, using an example analysis on a curve. The analysis can be conducted from the `fract_curve()` function in this package. The schema below is a walkthrough explanation of the algorithm and the two conditions to be met for this algorithm to work.  
+`fract_curve()` function in __*FractCurve*__ package can be used for various purpose. Deciding the number of clusters in an exploratory data analyses is one of them. In this vignette, an explanation of the algorithm for utilizing `fract_curve()` function in this purpose is presented. Also, a result from simulation study is shown. The analysis can be conducted from the `fract_curve_clust()` function, which is a wrapper function of `fract_curve()`, in this package. If you have not read the vignette on `fract_curve()`, you can invoke from this package by using `vignette("FractCurve", "FractCurve")`.  
 
 
-```{r echo=FALSE, label, out.width = "85%",  fig.cap = "A walkthrough of analysis concept."}
-require(knitr)
-include_graphics("Finding_a_point_of_fracture.pdf")
-```
-
-
-# 2. The hypothetical research question in the example analysis.
-It is said that *“The X disease has a tendency to recur m-months after a cure”*. Our research question is to confirm this hypothesis from time-to-event data. The first recurrence after cure was recorded as an event.
+# 2. A result from simulation.
+Suppose that you you have a dataset with the size of 50, the features of 32 variables. There are 8 subgroups in the population from which the data was sampled, and the characteristics of the subgroups are represented by the 32 features. This situation is simulated by the `R` code below:
 
 ```{r simulation}
 for(i in 1:10){
@@ -64,6 +57,11 @@ if(i==1){mat <- mat_i}else{mat <- rbind(mat,mat_i)}
 }
 
 heatmap(mat)
+```
+
+Using `fract_curve_clust()` function, that is a wrapper function of `fract_curve()`, the number of subgroups in the population can be detected as below.
+
+```{r a result from the simulation}
 
 res.fract_curve_clust <- fract_curve_clust(
   df.features = as.data.frame(mat),
@@ -75,27 +73,16 @@ res.fract_curve_clust <- fract_curve_clust(
   fn.df_of_IYs = NULL,
   fisher_test = FALSE
   )
-
-
 ```
 
+
+
 # 3. The algorithm.
-Initially, the Kaplan–Meier curve is scaled on both axes (the axis of “time”, and the axis of “the recurrence-free probability”) to a minimum ("min(*X*)” in the **panel A**) of 0 and a maximum ("max(*X*)” in the **panel A**) of 1 (the **panel A** in the walkthrough explanation). We call this scaled Kaplan–Meier curve, the “*scaled-KM* curve”, and the scaled axes, the “*x*-axis” and “*y*-axis”, respectively.  
-From the nature of the Kaplan–Meier curve, if there was a time at which the rate of the event increased, the slope of the original Kaplan–Meier curve would change at this point. Furthermore, if the point exists, the degree of the angle between the *y*-axis and the *scaled-KM* curve will be larger than 45 at the point with 0 on the *x*-axis, and there will be a point at which the degree of the angle becomes less than $45$ (this can be easily derived using trigonometry and the fact that, between correspond points on the original and the *scaled K–M* curves, the rank order of the degrees of angles are conserved). By utilizing the method detailed in the following paragraphs, the point at which the degree of the angle changes to be less than $45$ is determined as the point of increment in the rate of the recurrence (on the walkthrough explanation, on the walkthrough explanation, this corresponds to the step shown in the **panel B**).  
- On each point on the *scaled-KM* curve, a line which is parallel to the diagonal line is drawn. These lines are expressed as $y=a-x$ (**eq.1**); the value of a is determined from the values of x and y on the *scaled-KM* curve (if we were analyzing this on a Kaplan–Meier curve without scaling, the coefficient of x could not be determined).  
-While the angle between the *y-axis* and the *scaled-KM* curve is larger than the degree of $45$, the value of *a* (in *eq.1*) monotonically increases as the value of *x* does, and, is maximized at the point where the degree of the angle changes to be less than 45. This point is considered a *candidate for the point* of increment in the rate of the recurrence.  
-The next section explains the two conditions that must be confirmed before concluding that this *candidate* is the point that we are seeking.
+we are seeking.
 
 
 # 4 The two conditions to be met for the algorithm to work.
-As explained in the previous section, this algorithm detects a point at which the angle becomes less than 45 degrees, as a point which maximizes a in **eq.1**. This implies two limitation of the algorithm: the first is, *while the degree of the angle is larger than 45, the changes in the rate are ignored*, and the second is, *if the number of points is more than one, one of them is detected*. Thus, it is preferable to check, before making a conclusion, whether there is any point that has been missed.
-Whether these two limitations have affected the result or not can be confirmed by checking the two conditions below:  
-
-**Condition _a_**: The difference between the *scaled-KM* curve and its secant line, which intersects the points $(0,1)$ and *the point of the candidate*, does not vary in this interval.  
-**Condition _b_**: The *scaled-KM* curve is in the region above the diagonal line in the interval of $(0,1)$ and *the point of candidate*.  
-
-The `fract_curve` function outputs two plots, which can be used to check whether these conditions have been met. 
-These two conditions are depicted in the **panel C** in the walkthrough explanation. Regarding the **Condition _b_**, curves like red one in the **panel C**, which cross the diagonal line at the *“NG”* (not good) point, do not fulfil this condition. If it seems that a point of interest has been missed, reanalyzing after cutting off data in the right side of the falsely detected point will be a solution.
+As explained in the previous section, .
 
 
 
