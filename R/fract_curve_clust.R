@@ -15,6 +15,7 @@
 #' @importFrom stats time
 #' @importFrom utils write.csv
 #' @importFrom tidyr expand_grid
+#' @importFrom vegan vegdist
 #'
 #' @param df.features A data.frame-class object.
 #' @param df.phenotype A data.frame-class object.
@@ -44,10 +45,10 @@ fract_curve_clust <- function(
   fn.df_of_IYs = NULL
   ){
   rowv.hc <- hclust(
-    dist(
+    vegdist(
       as.matrix(
         df.features
-        ),
+        ) %>% t(),
       method=method.dist.row
       ),
     method = method.hclust.row
@@ -58,12 +59,12 @@ fract_curve_clust <- function(
 
 
   colv.hc <- hclust(
-    dist(
+    vegdist(
       t(
         as.matrix(
           df.features
           )
-        ),
+        ) %>% t(),
       method = method.dist.col
       ),
     method = method.hclust.col
