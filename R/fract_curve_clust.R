@@ -45,7 +45,7 @@ fract_curve_clust <- function(
   fn.df_of_IYs = NULL
   ){
   rowv.hc <- hclust(
-    vegdist(
+    vegan::vegdist(
       as.matrix(
         df.features
         ) %>% t(),
@@ -59,7 +59,7 @@ fract_curve_clust <- function(
 
 
   colv.hc <- hclust(
-    vegdist(
+    vegan::vegdist(
       t(
         as.matrix(
           df.features
