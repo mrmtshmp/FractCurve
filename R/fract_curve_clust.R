@@ -48,7 +48,7 @@ fract_curve_clust <- function(
     vegan::vegdist(
       as.matrix(
         df.features
-        ) %>% t(),
+        ),
       method=method.dist.row
       ),
     method = method.hclust.row
@@ -64,7 +64,7 @@ fract_curve_clust <- function(
         as.matrix(
           df.features
           )
-        ) %>% t(),
+        ),
       method = method.dist.col
       ),
     method = method.hclust.col
@@ -119,6 +119,10 @@ fract_curve_clust <- function(
     res.test <- list()
 
     for(i in 1:nrow(row.select)){
+
+      print(clusters)
+      print(group)
+
       row.select_i <- unlist(c(row.select[i,'a'], row.select[i,'b']))
       res.test_i <- fisher.test(
         as.matrix(
