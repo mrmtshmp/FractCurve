@@ -103,25 +103,14 @@ fract_curve_clust <- function(
     k = which(df.res.fracrcurve$rank.I.Y==1)
     )
 
-  group <- df.phenotype[,var.phenoGroup]
-
-  names(group) <-
-    rownames(
-      df.phenotype
-    )
-
-  if(
-    class(
-      try(
-        table(clusters, group)
-        )
-      ) != "try-error"
-  ){fisher_test <- fisher_test}else{
-    fisher_test <- FALSE
-  }
-
-
   if(fisher_test){
+
+    group <- df.phenotype[,var.phenoGroup]
+
+    names(group) <-
+      rownames(
+        df.phenotype
+      )
 
     row.select <-
       expand_grid(
