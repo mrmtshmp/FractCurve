@@ -123,6 +123,10 @@ fract_curve_clust <- function(
     for(i in 1:nrow(row.select)){
 
       row.select_i <- unlist(c(row.select[i,'a'], row.select[i,'b']))
+
+      print(clusters)
+      print(group)
+
       res.test_i <- fisher.test(
         as.matrix(
           table(clusters, group)[
