@@ -79,7 +79,7 @@ fract_curve_clust <- function(
 
   df.height <-
     data.frame(
-      height=max(res.clust[[1]]$height)-res.clust[[1]]$height,
+      height=sum(max(res.clust[[1]]$height)-res.clust[[1]]$height),
       event =1
       )
 
@@ -124,7 +124,8 @@ fract_curve_clust <- function(
 
       row.select_i <- unlist(c(row.select[i,'a'], row.select[i,'b']))
 
-      print(table(clusters, group))
+      print(clusters)
+      print(group)
 
       res.test_i <- fisher.test(
         as.matrix(
