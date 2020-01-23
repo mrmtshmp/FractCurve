@@ -49,7 +49,8 @@ fract_curve_clust <- function(
       as.matrix(
         df.features
         ),
-      method=method.dist.row
+      method=method.dist.row,
+      na.rm = TRUE
       ),
     method = method.hclust.row
     )
@@ -65,7 +66,8 @@ fract_curve_clust <- function(
           df.features
           )
         ),
-      method = method.dist.col
+      method = method.dist.col,
+      na.rm = TRUE
       ),
     method = method.hclust.col
     )
@@ -119,9 +121,6 @@ fract_curve_clust <- function(
     res.test <- list()
 
     for(i in 1:nrow(row.select)){
-
-      print(clusters)
-      print(group)
 
       row.select_i <- unlist(c(row.select[i,'a'], row.select[i,'b']))
       res.test_i <- fisher.test(
