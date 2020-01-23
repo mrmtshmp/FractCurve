@@ -79,7 +79,7 @@ fract_curve_clust <- function(
 
   df.height <-
     data.frame(
-      height=max(res.clust[[1]]$height)-sum(res.clust[[1]]$height),
+      height=max(res.clust[[1]]$height)-res.clust[[1]]$height,
       event =1
       )
 
@@ -103,6 +103,18 @@ fract_curve_clust <- function(
     k = which(df.res.fracrcurve$rank.I.Y==1)
     )
 
+
+  if(
+    class(
+      try(
+        table(clusters, group)
+        )
+      ) != "try-error"
+  ){fisher_test <- fisher_test}else{
+    fisher_test <- FALSE
+  }
+
+
   if(fisher_test){
     group <- df.phenotype[,var.phenoGroup]
 
@@ -125,7 +137,7 @@ fract_curve_clust <- function(
       row.select_i <- unlist(c(row.select[i,'a'], row.select[i,'b']))
 
       print(clusters)
-      print(group)
+      print(clusters)
 
       res.test_i <- fisher.test(
         as.matrix(
