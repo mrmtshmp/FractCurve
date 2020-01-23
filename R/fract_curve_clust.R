@@ -79,7 +79,7 @@ fract_curve_clust <- function(
 
   df.height <-
     data.frame(
-      height=sum(max(res.clust[[1]]$height)-res.clust[[1]]$height),
+      height=max(res.clust[[1]]$height)-sum(res.clust[[1]]$height),
       event =1
       )
 
