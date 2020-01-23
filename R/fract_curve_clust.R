@@ -124,8 +124,7 @@ fract_curve_clust <- function(
 
       row.select_i <- unlist(c(row.select[i,'a'], row.select[i,'b']))
 
-      print(clusters)
-      print(group)
+      print(table(clusters, group))
 
       res.test_i <- fisher.test(
         as.matrix(
