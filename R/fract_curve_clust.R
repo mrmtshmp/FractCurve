@@ -16,6 +16,8 @@
 #' @importFrom utils write.csv
 #' @importFrom tidyr expand_grid
 #' @importFrom vegan vegdist
+#' @importFrom coda.base dist
+#' @importFrom NbClust NbClust
 #'
 #' @param df.features A data.frame-class object.
 #' @param df.phenotype A data.frame-class object.
@@ -44,8 +46,19 @@ fract_curve_clust <- function(
   fn.plot_pdf = NULL,
   fn.df_of_IYs = NULL
   ){
+
+
+  if(method.dist.col == "aitchison"){my.dist.col <- coda.base::dist}else{
+    my.dist.col <- vegan::vegdist()
+  }
+
+  if(method.dist.row == "aitchison"){my.dist.row <- coda.base::dist}else{
+    my.dist.row <- vegan::vegdist()
+  }
+
+
   rowv.hc <- hclust(
-    vegan::vegdist(
+    my.dist.row(
       as.matrix(
         df.features
         ),
@@ -60,7 +73,7 @@ fract_curve_clust <- function(
 
 
   colv.hc <- hclust(
-    vegan::vegdist(
+    my.dist.col(
       t(
         as.matrix(
           df.features
