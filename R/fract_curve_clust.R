@@ -62,8 +62,7 @@ fract_curve_clust <- function(
       as.matrix(
         df.features
         ),
-      method=method.dist.row,
-      na.rm = TRUE
+      method=method.dist.row
       ),
     method = method.hclust.row
     )
@@ -79,8 +78,7 @@ fract_curve_clust <- function(
           df.features
           )
         ),
-      method = method.dist.col,
-      na.rm = TRUE
+      method = method.dist.col
       ),
     method = method.hclust.col
     )
