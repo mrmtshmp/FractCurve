@@ -49,11 +49,11 @@ fract_curve_clust <- function(
 
 
   if(method.dist.col == "aitchison"){my.dist.col <- coda.base::dist}else{
-    my.dist.col <- vegan::vegdist()
+    my.dist.col <- vegan::vegdist
   }
 
   if(method.dist.row == "aitchison"){my.dist.row <- coda.base::dist}else{
-    my.dist.row <- vegan::vegdist()
+    my.dist.row <- vegan::vegdist
   }
 
 
