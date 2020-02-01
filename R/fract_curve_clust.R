@@ -92,7 +92,7 @@ fract_curve_clust <- function(
   if(method.height=='direct'){
     df.height <-
       data.frame(
-        height=res.clust[[1]]$height,
+        height=-res.clust[[1]]$height,
         event =1
       )
     }
