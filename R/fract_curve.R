@@ -314,8 +314,7 @@ fract_curve <- function(
     )
   dev.off()
   plot(
-    ggsurvplot(km.fit) +
-      ggplot2::theme_bw()
+    ggsurvplot(km.fit)
     )
   dev.off()
   }
