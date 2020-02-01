@@ -8,8 +8,9 @@ fract_curve_clust(df.features = OTUdata_all,
   df.phenotype = pData(obj.ADS), var.phenoGroup = "Disease",
   method.dist.row = "manhattan", method.dist.col = "manhattan",
   method.hclust.row = "ward", method.hclust.col = "ward",
-  fisher_test = TRUE, dir.output = NULL, get.df_of_IYs,
-  fn.plot_pdf = NULL, fn.df_of_IYs = NULL)
+  method.height = "substr.max", fisher_test = TRUE,
+  dir.output = NULL, get.df_of_IYs, fn.plot_pdf = NULL,
+  fn.df_of_IYs = NULL)
 }
 \arguments{
 \item{df.features}{A data.frame-class object.}
@@ -23,6 +24,8 @@ fract_curve_clust(df.features = OTUdata_all,
 \item{method.hclust.row}{An aggromerizing algorithm for clustering of features.}
 
 \item{method.hclust.col}{An aggromerizing algorithm for clustering of samples.}
+
+\item{method.height}{'substr.max' (default) or 'direct'.}
 
 \item{dir.output}{The directory to output results.}
 
