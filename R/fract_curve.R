@@ -313,6 +313,11 @@ fract_curve <- function(
       ggplot2::theme_bw()
     )
   dev.off()
+  plot(
+    ggsurvplot(km.fit) +
+      ggplot2::theme_bw()
+    )
+  dev.off()
   }
   print(head(df.I.Y))
   return(df.I.Y[order(df.I.Y$km.fit.time),])
