@@ -312,10 +312,9 @@ fract_curve <- function(
       ggplot2::geom_point() +
       ggplot2::theme_bw()
     )
-  dev.off()
-  plot(
-    ggsurvplot(km.fit)
-    )
+
+  ggsurvplot(km.fit)
+
   dev.off()
   }
   print(head(df.I.Y))
