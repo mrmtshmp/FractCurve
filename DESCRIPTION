@@ -26,4 +26,7 @@ Imports:
     grDevices,
     graphics,
     stats,
-    utils
+    utils,
+    coda.base,
+    ggplot2,
+    vegan

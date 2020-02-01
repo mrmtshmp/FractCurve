@@ -4,20 +4,12 @@
 \alias{fract_curve_clust}
 \title{Decide the number of clusters by the fracture point of the height.}
 \usage{
-fract_curve_clust(
-  df.features = OTUdata_all,
-  df.phenotype = pData(obj.ADS),
-  var.phenoGroup = "Disease",
-  method.dist.row = "manhattan",
-  method.dist.col = "manhattan",
-  method.hclust.row = "ward",
-  method.hclust.col = "ward",
-  fisher_test = TRUE,
-  dir.output = NULL,
-  get.df_of_IYs,
-  fn.plot_pdf = NULL,
-  fn.df_of_IYs = NULL
-)
+fract_curve_clust(df.features = OTUdata_all,
+  df.phenotype = pData(obj.ADS), var.phenoGroup = "Disease",
+  method.dist.row = "manhattan", method.dist.col = "manhattan",
+  method.hclust.row = "ward", method.hclust.col = "ward",
+  fisher_test = TRUE, dir.output = NULL, get.df_of_IYs,
+  fn.plot_pdf = NULL, fn.df_of_IYs = NULL)
 }
 \arguments{
 \item{df.features}{A data.frame-class object.}

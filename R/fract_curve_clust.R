@@ -6,6 +6,8 @@
 #' @import dplyr
 #' @import ggplot2
 #' @importFrom stats hclust
+#' @importFrom vegan vegdist
+#' @importFrom coda.base dist
 #' @importFrom stats dist
 #' @importFrom grDevices dev.off
 #' @importFrom grDevices pdf
@@ -15,9 +17,6 @@
 #' @importFrom stats time
 #' @importFrom utils write.csv
 #' @importFrom tidyr expand_grid
-#' @importFrom vegan vegdist
-#' @importFrom coda.base dist
-#' @importFrom NbClust NbClust
 #'
 #' @param df.features A data.frame-class object.
 #' @param df.phenotype A data.frame-class object.

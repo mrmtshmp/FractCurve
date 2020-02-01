@@ -1,16 +1,16 @@
 ---
-title: "FractCurve: an R package for finding a point of fracture on a curve."
-author: Shimpei Morimoto
-output: 
+title: 'FractCurve: an R package for finding a point of fracture on a curve.'
+author: "Shimpei Morimoto"
+output:
+  word_document:
+    toc: yes
   html_document:
-    mathjax:  default
-    fig_caption:  true
-    toc: true
-    section_numbering: true
-vignette: >
-  %\VignetteIndexEntry{FractCurve: an R package for finding a point of fracture on a curve.}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+    fig_caption: yes
+    mathjax: default
+    section_numbering: yes
+    toc: yes
+vignette: |
+  %\VignetteIndexEntry{FractCurve: an R package for finding a point of fracture on a curve.} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}

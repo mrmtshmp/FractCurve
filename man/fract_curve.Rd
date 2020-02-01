@@ -4,18 +4,9 @@
 \alias{fract_curve}
 \title{Finding a point of fracture on a Kaplan-Meier curve.}
 \usage{
-fract_curve(
-  data,
-  var.time,
-  var.event,
-  var.x = 1,
-  fn.plot_pdf,
-  km.fit = NULL,
-  dir.output = NULL,
-  fn.output = NULL,
-  get.df_of_IYs = TRUE,
-  fn.df_of_IYs = NULL
-)
+fract_curve(data, var.time, var.event, var.x = 1, fn.plot_pdf,
+  km.fit = NULL, dir.output = NULL, fn.output = NULL,
+  get.df_of_IYs = TRUE, fn.df_of_IYs = NULL)
 }
 \arguments{
 \item{data}{A data.frame-class object.}
