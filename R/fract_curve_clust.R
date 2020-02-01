@@ -119,10 +119,18 @@ fract_curve_clust <- function(
       order(df.res.fracrcurve$km.fit.time),
       ]
 
+  if(method.height=='substr.max'){
   clusters <- cutree(
     res.clust[[1]],
     k = which(df.res.fracrcurve$rank.I.Y==1)
-    )
+    )}
+
+  if(method.height=='direct'){
+  clusters <- cutree(
+    res.clust[[1]],
+    k = which(df.res.fracrcurve$rank.I.Y==1)
+    )}
+
 
   if(fisher_test){
 
