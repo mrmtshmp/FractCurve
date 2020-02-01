@@ -128,7 +128,7 @@ fract_curve_clust <- function(
   if(method.height=='direct'){
   clusters <- cutree(
     res.clust[[1]],
-    k = which(df.res.fracrcurve$rank.I.Y==1)
+    k = which(df.res.fracrcurve$rank.I.Y==max(df.res.fracrcurve$rank.I.Y))
     )}
 
 
