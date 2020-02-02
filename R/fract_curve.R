@@ -15,6 +15,8 @@
 #' @param data A data.frame-class object.
 #' @param var.time A column name specifies the time variable in the data.
 #' @param var.event A column name specifies the event variable in the data.
+#' @param criteria  Default = 'max_I.Y'; Criteria on I.Y for the point to be identified.
+#' @param fn.plot_pdf A character string for thefile name of output image as pdf file.
 #' @param km.fit As an alternative to "data", "var.time" and "var.event", you can choose input a survfit-class object.
 #' @param dir.output  The directory to output results.
 #' @param get.df_of_IYs A logical if IYs will be obtained as data.frame in result.
@@ -28,6 +30,7 @@ fract_curve <- function(
   var.time,
   var.event,
   var.x = 1,
+  criteria='max_I.Y',
   fn.plot_pdf,
   km.fit=NULL,
   dir.output=NULL,
@@ -207,13 +210,21 @@ fract_curve <- function(
 
   # PDF file.
 
+  vline.on <-
+    ifelse(
+      criteria=='max_I.Y',
+      'max(df.I.Y$I.Y)',
+      criteria
+      )
+
+
   if(is.null(fn.plot_pdf)){
     plot(
       ggdata +
         ggplot2::geom_point() +
         ggplot2::geom_vline(
           xintercept =  df.I.Y[
-            df.I.Y$I.Y==max(df.I.Y$I.Y),
+            df.I.Y$I.Y==eval(parse(text=vline.on)),
             "km.fit.time"
             ]
         ) +
@@ -223,7 +234,7 @@ fract_curve <- function(
               stats::quantile(df.I.Y$km.fit.time,c(0, 0.25, 0.75, 1))
             ),
             df.I.Y[
-              df.I.Y$I.Y==max(df.I.Y$I.Y),
+              df.I.Y$I.Y==eval(parse(text=vline.on)),
               "km.fit.time"
               ]
           )
@@ -235,7 +246,7 @@ fract_curve <- function(
         ggplot2::geom_point() +
         ggplot2::geom_vline(
           xintercept =  df.I.Y[
-            df.I.Y$I.Y==max(df.I.Y$I.Y),
+            df.I.Y$I.Y==eval(parse(text=vline.on)),
             "km.fit.time"
             ]
         ) +
@@ -243,7 +254,7 @@ fract_curve <- function(
           breaks = c(
             unname(stats::quantile(df.I.Y$km.fit.time,c(0, 0.25, 0.75, 1))),
             df.I.Y[
-              df.I.Y$I.Y==max(df.I.Y$I.Y),
+              df.I.Y$I.Y==eval(parse(text=vline.on)),
               "km.fit.time"
               ]
           )
@@ -270,7 +281,7 @@ fract_curve <- function(
       ggplot2::geom_point() +
       ggplot2::geom_vline(
         xintercept =  df.I.Y[
-          df.I.Y$I.Y==max(df.I.Y$I.Y),
+          df.I.Y$I.Y==eval(parse(text=vline.on)),
           "km.fit.time"
           ]
       ) +
@@ -292,7 +303,7 @@ fract_curve <- function(
       ggplot2::geom_point() +
       ggplot2::geom_vline(
         xintercept =  df.I.Y[
-          df.I.Y$I.Y==max(df.I.Y$I.Y),
+          df.I.Y$I.Y==eval(parse(text=vline.on)),
           "km.fit.time"
           ]
       ) +
@@ -300,7 +311,7 @@ fract_curve <- function(
         breaks = c(
           unname(stats::quantile(df.I.Y$km.fit.time,c(0, 0.25, 0.75, 1))),
           df.I.Y[
-            df.I.Y$I.Y==max(df.I.Y$I.Y),
+            df.I.Y$I.Y==eval(parse(text=vline.on)),
             "km.fit.time"
             ]
         )

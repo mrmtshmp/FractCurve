@@ -4,8 +4,8 @@
 \alias{fract_curve}
 \title{Finding a point of fracture on a Kaplan-Meier curve.}
 \usage{
-fract_curve(data, var.time, var.event, var.x = 1, fn.plot_pdf,
-  km.fit = NULL, dir.output = NULL, fn.output = NULL,
+fract_curve(data, var.time, var.event, var.x = 1, criteria = "max_I.Y",
+  fn.plot_pdf, km.fit = NULL, dir.output = NULL, fn.output = NULL,
   get.df_of_IYs = TRUE, fn.df_of_IYs = NULL)
 }
 \arguments{
@@ -15,7 +15,9 @@ fract_curve(data, var.time, var.event, var.x = 1, fn.plot_pdf,
 
 \item{var.event}{A column name specifies the event variable in the data.}
 
-\item{fn.plot_pdf}{The pdf file name for outputs.}
+\item{criteria}{Default = 'max_I.Y'; Criteria on I.Y for the point to be identified.}
+
+\item{fn.plot_pdf}{A character string for thefile name of output image as pdf file.}
 
 \item{km.fit}{As an alternative to "data", "var.time" and "var.event", you can choose input a survfit-class object.}
 
@@ -24,6 +26,8 @@ fract_curve(data, var.time, var.event, var.x = 1, fn.plot_pdf,
 \item{get.df_of_IYs}{A logical if IYs will be obtained as data.frame in result.}
 
 \item{fn.df_of_IYs}{The csv file name for IY output.}
+
+\item{fn.plot_pdf}{The pdf file name for outputs.}
 }
 \description{
 Finding a point of fracture on a Kaplan-Meier curve.

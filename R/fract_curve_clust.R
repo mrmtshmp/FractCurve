@@ -25,6 +25,7 @@
 #' @param method.hclust.row An aggromerizing algorithm for clustering of features.
 #' @param method.hclust.col An aggromerizing algorithm for clustering of samples.
 #' @param method.height 'substr.max' (default) or 'direct'.
+#' @param criteria Criteria on I.Y for the point to be identified.
 #' @param dir.output  The directory to output results.
 #' @param get.df_of_IYs A logical if IYs will be obtained as data.frame in result.
 #' @param fn.plot_pdf   The pdf file name for outputs.
@@ -41,6 +42,7 @@ fract_curve_clust <- function(
   method.hclust.row ='ward',
   method.hclust.col ='ward',
   method.height='substr.max',
+  criteria='max_I.Y',
   fisher_test=TRUE,
   dir.output = NULL,
   get.df_of_IYs,
@@ -108,6 +110,7 @@ fract_curve_clust <- function(
     df.height,
     var.time = 'height',
     var.event = 'event',
+    criteria=criteria,
     fn.plot_pdf = fn.plot_pdf,
     dir.output = dir.output,
     get.df_of_IYs = get.df_of_IYs,
